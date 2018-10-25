@@ -1,0 +1,2 @@
+/* user*/
+INSERT INTO "CUSTOMER" ("ID","FULLNAME","MARRIEDSTATUS","PHONENUMBER") VALUES (1, 'mutlu', 'single', '123456');
