@@ -3,7 +3,6 @@ package com.happytelecom.controller;
 import com.happytelecom.model.Customer;
 import com.happytelecom.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,13 +40,13 @@ public class CustomerController {
         return new ResponseEntity<List<Customer>>(customer, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/customer/", method = RequestMethod.POST)
+    @RequestMapping(value = "/customer", method = RequestMethod.POST)
     public ResponseEntity<?> createCustomer(@RequestBody Customer customer, UriComponentsBuilder ucBuilder) {
 
         customerService.addCustomer(customer);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/api/user/{id}").buildAndExpand(customer.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/api/customer/{id}").buildAndExpand(customer.getId()).toUri());
 
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
     }

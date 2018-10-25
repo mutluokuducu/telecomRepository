@@ -29,6 +29,8 @@ public class CustomerServiceImpl implements CustomerService{
         cust.setMarriedStatus(customer.getMarriedStatus());
         cust.setPhoneNumber(customer.getPhoneNumber());
 
+        customerRepository.save(cust);
+
         return cust;
     }
 
